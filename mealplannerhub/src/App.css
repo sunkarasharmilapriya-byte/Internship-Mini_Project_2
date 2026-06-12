@@ -1,0 +1,201 @@
+/* Universal Resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Body Layout with Dark Rustic Food Background Image */
+body {
+    /* Utilizing Inter/Helvetica system stack for completely straight, geometric letterforms */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(rgba(12, 10, 22, 0.85), rgba(18, 12, 38, 0.92)), 
+                url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f3f4f6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Header Styling - Corrected size and spacing to see full letters */
+.main-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    flex-shrink: 0;
+}
+
+.main-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.3; /* Fixes top/bottom vertical clipping */
+    padding: 0.5rem 0; /* Gives letters room to render fully */
+    display: inline-block; /* Aligns rendering box perfectly with text */
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #00f0ff, #7f00ff, #ff007f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+}
+
+.subtitle {
+    color: #cbd5e1;
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 400; /* Made slightly thicker for cleaner straight lines */
+}
+
+.status-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.4rem 1.2rem;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #00f0ff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-badge.error {
+    background: rgba(255, 0, 127, 0.1);
+    border-color: rgba(255, 0, 127, 0.25);
+    color: #ff007f;
+}
+
+/* Side-by-Side Horizontal Timeline Layout */
+.timeline-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem 0.5rem 2rem 0.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom Neon Scrollbar */
+.timeline-container::-webkit-scrollbar {
+    height: 10px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #00f0ff, #ff007f);
+    border-radius: 10px;
+}
+
+/* Glassmorphic Day Cards */
+.day-card {
+    flex: 0 0 320px;
+    background: rgba(20, 16, 38, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 22px;
+    padding: 1.75rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+}
+
+.day-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15);
+}
+
+.day-title {
+    font-size: 1.4rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Input Fields & Labels */
+.meal-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.meal-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Color markers per tier */
+.input-group:nth-of-type(1) .meal-label { color: #00f0ff; }
+.input-group:nth-of-type(2) .meal-label { color: #ffaa00; }
+.input-group:nth-of-type(3) .meal-label { color: #ff007f; }
+
+.meal-field {
+    background: rgba(10, 8, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    font-style: normal; /* Forces the text to stay upright/straight */
+    transition: all 0.25s ease;
+}
+
+.meal-field:focus {
+    background: rgba(10, 8, 20, 0.85);
+    border-color: #00f0ff;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+}
+
+/* CHANGED: Removed italic styling from placeholder to keep it perfectly straight */
+.meal-field::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+    font-style: normal; 
+}
+
+/* Loading Backdrop */
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #00f0ff;
+    font-weight: bold;
+}
+
+/* Mobile adjustments */
+@media(max-width: 480px) {
+    .day-card {
+        flex: 0 0 280px;
+    }
+    .main-header h1 {
+        font-size: 2.2rem;
+    }
+}
